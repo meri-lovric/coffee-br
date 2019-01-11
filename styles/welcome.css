@@ -1,0 +1,101 @@
+
+  /* WELCOME CARD SEATING */
+
+  @font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('https://tympanus.net/fonts/codropsicons/codropsicons.eot');
+	src:url('https://tympanus.net/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('https://tympanus.net/fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('https://tympanus.net/fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('https://tympanus.net/fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+/* GENERAL TAB LAYOUT CONTAINER*/
+.layout {
+    -ms-transform-origin: center top 0px;
+    transform-origin: center top 0px
+}
+/* individual seat */
+.layout__seat {
+    border: solid 2px #fff;
+    /*
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    */
+    border-radius: 20%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    font-size: 13px;
+    height: 40px;
+    width: 60px;
+    margin:2px;
+    cursor: pointer;
+    outline: 0
+}
+
+.layout__seat:focus:not(.layout__seat--unavailable),.layout__seat:hover:not(.layout__seat--unavailable) {
+    transition: .125s;
+    border: solid 2px #00a8e1
+}
+
+.layout__seat:focus:not(.layout__seat--unavailable) svg,.layout__seat:hover:not(.layout__seat--unavailable) svg {
+    fill: #00a8e1;
+    transition: .125s
+}
+
+.layout__seat.layout__seat--unavailable {
+    background-color: #aaa;
+    border: solid 2px #aaa;
+    cursor: default
+}
+
+.layout__seat.layout__seat--selected {
+    background: #e51937;
+    border-color: #e51937;
+    color: white;
+    transition: .125s
+}
+
+.layout__seat.layout__seat--selected:hover {
+    background-color: #941023;
+    border-color: #941023
+}
+
+.layout__seat--empty-space {
+    visibility: hidden
+}
+/* SEATING LAYOUT */
+.layout__grid {
+    display: -ms-flexbox;
+	display: flex;
+	column-gap: 5px;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    padding: 0
+}
+
+.layout__row {
+    margin: 16px;
+    outline: 0
+}
+
+.layout__row:focus .layout__seat:not(.layout__seat--unavailable) {
+    border: solid 2px #00a8e1
+}
+
+
+.layout__column {
+    margin: 0 4px;
+}
+
+.layout__seat__icon {
+    width: 40%
+}
