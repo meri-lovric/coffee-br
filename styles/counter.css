@@ -1,0 +1,56 @@
+
+/* COFFEE COUNTER */
+
+
+.listing--animated-ordered{
+    position: relative;
+    margin-top: 50px;
+    border: solid 5px #CCC;
+
+    text-align: center;
+  }
+    .listing--animated-ordered:before{
+      content: "";
+      width: 0px;
+      height: 5px;
+      position: absolute;
+      top: -5px;
+      left: 0;
+      z-index: 0;
+      transition: 1.0s ease-in-out;
+    }
+  
+   .listing--animated-ordered ol{
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1200px;
+      margin: 10px auto 0 auto;
+      padding: 0;
+   }
+    .listing--animated-ordered  li{
+        display: inline-block;
+        margin: 0 2% 0 0;
+        padding: 0;
+        font-size: 13px;
+    }
+      .header-circle{
+          box-sizing: border-box;
+          width: 50px;
+          height: 50px;
+          position: relative;
+          z-index: 2;
+          margin: 0 auto;
+          border: solid 5px #CCC;
+          border-radius: 50%;
+          color: #CCC;
+          font-family: "museo", sans-serif;
+          font-size: 20px;
+          line-height: 40px;
+      }
+      .header-circle.visible{width: 100%;}
+      .header-circle:before{width: 100%;}      
+      .header-circle:before ol li{
+          transition-delay:0.15s;
+      }
+  
