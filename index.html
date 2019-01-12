@@ -40,6 +40,8 @@
         <button class="tablinks" onclick="openTab(event, 'Welcome')" >Dobrodošli</button>
         <button class="tablinks" onclick="openTab(event, 'Offer')">Ponuda</button>
         <button class="tablinks" onclick="openTab(event, 'Profile'),addUser(event,'Profile') ">Profil</button>
+        <button class="tablinks" onclick="openTab(event, 'Admin') ">Admininstrator</button>
+
       </div>
       
       <!-- Tab content -->
@@ -421,6 +423,34 @@
                 
         </div>
       </div>
+            
+            <!--fourth tab-->
+      <div id="Admin" class="tabcontent">
+            <div class="layout">
+                <div class="financial-transactions">
+                    <h3>Promet</h3>
+                    <button class="admin-menu"><li>Dnevni promet </li></button>
+                    <button class="admin-menu"><li>Mjesečni promet </li></button>
+                <div class="tables">
+                    <h3>Stolovi</h3>
+                    <button class="admin-menu"><li>Zauzeti </li></button>
+                    <button class="admin-menu"><li>Slobodni </li></button>
+                </div>
+
+                <div class="items">
+                    <h3>Artikli-količina: </h3>
+                    <button class="admin-menu"><li>Espresso </li></button>
+                    <button class="admin-menu"><li>Mala kava </li></button>
+                    <button class="admin-menu"><li>Velika kava </li></button>
+                    <button class="admin-menu"><li>Produžena </li></button>
+
+
+                </div>
+                <div class="users">
+                    <h3>Korisnici: </h3>
+                    <button class="admin-menu"><li>Registrirani </li></button>
+                </div>           
+             </div>
         </section>
 
         <section id="order-container">
