@@ -44,3 +44,11 @@ main{
     margin: 70px auto;
 }
 
+.admin-menu
+{
+    outline-color: none;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    display: grid;
+}
