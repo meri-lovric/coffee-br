@@ -137,7 +137,7 @@
     color: #ffffff;
   }
   
-  input, textarea {
+  .field-wrap input, textarea {
     font-size: 22px;
     display: block;
     width: 100%;
