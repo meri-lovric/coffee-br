@@ -37,13 +37,43 @@ function handlePanelClick(e){
       e.preventDefault();
       })
       //
-      // SUBMIT BUTTON
+      // ADD BUTTON
       //
-    let submit = currentPanel.parentElement.querySelector(".submit");
-    submit.addEventListener("click", function(){
+    let add = currentPanel.parentElement.querySelector(".submit");
+    add.addEventListener("click", addArticles);
+    add.addEventListener("click", calculatePrice);
+    function addArticles()
+    {
+      let orderTemplate=document.querySelector("#order-template");
+      let orderElement=document.importNode(orderTemplate.content, true);
+      
+      let articleName=currentPanel.querySelector(".name");
+      let articleNum=order.querySelector('[for="quantity"]');
+      let orderList=orderElement.querySelectorAll("span");
+      orderList[0].innerHTML=articleName.innerHTML;
+      orderList[1].innerHTML="x";
+      orderList[2].innerHTML=articleNum.innerHTML;
 
-    })
+      let orderContainer=document.querySelector(".order-row");
+      let ordered=document.querySelector("#order-list");
+      orderContainer.insertBefore(orderElement,ordered);
+    }
 
+    //PRICE CALCULATOR//
+    function calculatePrice()
+    {
+    let price =currentPanel.parentElement.querySelector(".price");
+    let totalPrice=document.querySelector(".total");
+    let payablePrice=document.querySelector(".payable");
+    let discountPrice=document.querySelector(".discount");
+
+    totalPrice.textContent=Number(totalPrice.textContent)+
+    Number(price.textContent);
+
+    payablePrice.textContent=Number(totalPrice.textContent)-
+    Number(discountPrice.textContent);
+    }
+    
     //
     //  QUANTITY
     //  
