@@ -60,18 +60,20 @@ document.querySelector('.form .close').addEventListener("click", function() {
   document.querySelector('.bg-modal').style.display = "none";
   });
 
-document.getElementById('logout-icon').addEventListener("click", function() {
+document.querySelector('.button-block').addEventListener("click", function() {
+    document.querySelector('.bg-modal').style.display = "none";
+});
+
+/*document.getElementById('logout-icon').addEventListener("click", function() {
   document.querySelector('.modal-box').style.display = "flex";
   });
 
 document.querySelector('.modal-box .close').addEventListener("click", function() {
   document.querySelector('.modal-box').style.display = "none";
-  });
-
-document.querySelector('.button-block').addEventListener("click", function() {
-    document.querySelector('.bg-modal').style.display = "none";
-  });
-/*
-document.querySelector('#login .button-block').addEventListener("click", function() {
-    document.querySelector('.bg-modal').style.display = "none";
   });*/
+
+document.querySelector('#logout-icon').addEventListener("click", function() {
+  confirm('Jeste li sigurni da se želite odjaviti?')
+});
+
+
