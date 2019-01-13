@@ -88,3 +88,13 @@ function addUser(evt, TabName){
   document.querySelector("#Profile .username").innerHTML="Korisničko ime: " + username;
   document.querySelector("#Profile .email").innerHTML="E-mail adresa: " + email;
 }
+
+/*animacija loga*/
+function init() {  
+  title.classList.add("loading");
+  setTimeout(function() { title.classList.remove("loading"); }, 1800); 
+}
+window.onload = function() {
+  document.body.addEventListener('click', () => init());
+	init();
+};

@@ -1,0 +1,62 @@
+ #header-icons .box {
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  width: 250px;
+  height:65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#title {
+  width: auto; 
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+	opacity: 1;
+	transform: scale(1);
+  transition: transform 0.8s ease, opacity 1.6s ease;
+  user-select: none;
+  height:50px;
+
+}
+b { 
+  font-weight: 700; 
+  position:relative;
+  top: 12px;
+  display: inline-block;
+}
+.coffee-br {
+  font-weight: 300;
+  position:relative;
+  top: 12px;
+  display: inline-block;
+}
+
+.bracket {
+  color:#4EB6DA;
+  position:relative;
+  top: 12px;
+}
+
+#title:before, #title:after {
+	height: 0.1vw;
+	width: 100%;
+	content: "";
+	background: rgba(255, 255, 255, 0.9);
+	display: block;
+	position: absolute;
+	transition: width 0.8s ease;
+	transition-delay: 0.8s;
+}
+#title:before { top: 0; left: 0; }
+#title:after  { bottom: 0; right: 0; }
+
+.loading #title {
+	transform: scale(4);
+	opacity: 0;
+  transition: all 0s;
+}
+.loading #title:before, .loading #title:after {
+	width: 0;
+}
