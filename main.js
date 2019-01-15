@@ -1,4 +1,8 @@
-var occupiedSeats = 0;
+// VARIABLES
+
+var occupiedSeats = 0; // global variable used for displaying current occupation
+/* ---------------------------------------------------------------------- */
+
 // TABS
 function openTab(evt, tabName) {
     // Declare all variables
@@ -21,19 +25,17 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
   }
 
-  // SEATS
+/* ---------------------------------------------------------------------- */
+
+  // CLICKING ON SEATS
+
  let seats = document.querySelectorAll(".layout__seat");
- /*
- for(i=0;i<seats.length;i++){
-   if(seats[i].classList.contains("clicked")){
-     occupiedSeats++;
-   }
- }
- */
+ 
  document.getElementById("seat-counter").innerHTML = occupiedSeats+"/"+seats.length;
  for(i=0;i<seats.length;i++){
    let seat = seats[i];
    seat.addEventListener('click', reserveSeat);
+   seat.addEventListener("click", handleClick);
  }
   function reserveSeat(e){
     let reservedSeat=e.currentTarget;
@@ -44,15 +46,49 @@ function openTab(evt, tabName) {
    else{
      reservedSeat.classList.remove("layout__seat--selected");
      occupiedSeats--;
-   }
+     for(let j=0;j < options.length; j++){
+      let  option = options[j];
+      if(option.textContent.indexOf(reservedSeat.textContent) > 0){
+      }
+    }
+     }
    document.getElementById("seat-counter").innerHTML = occupiedSeats+"/"+seats.length;
  }
 
- // OPEN WELCOME ON LOAD
+ let options = document.querySelectorAll(".table option");
 
- window.onload = function() {
+function handleClick(e){
+  let table = e.currentTarget;
+if(table.classList.contains(".layout__seat.layout__seat--selected " )== 0){
+  for(let j=0;j < options.length; j++){
+      let  option = options[j];
+      if(option.textContent.indexOf(table.textContent) > 0){
+          option.setAttribute('disabled', true);
+      }
+  }
+}
+}
+/* ---------------------------------------------------------------------- */
+
+
+// LOGO ANIMATION 
+
+function init() {  
+  title.classList.add("loading");
+  setTimeout(function() { title.classList.remove("loading"); }, 1800); 
+}
+/* ---------------------------------------------------------------------- */
+// LOADING WINDOW
+
+window.onload = function() {
   document.getElementById("Welcome").style.display = "block";
-};
+  document.body.addEventListener('click', () => init());
+	init();
+}; 
+
+/* ---------------------------------------------------------------------- */
+
+// TEST ADD USER
 
 function addUser(evt, TabName){
   let fullName = prompt("Ime i prezime:", "full name");
@@ -67,47 +103,4 @@ function addUser(evt, TabName){
   document.querySelector("#Profile .email").innerHTML="E-mail adresa: " + email;
 }
 
-/* COFFEE COUNTER */
-
-// Check if an element is on sceen every 2 seconds. Add and remove "visbile" class as applicable.
-setInterval(function() {
-  $('.listing--animated-ordered').filter(":onScreen").addClass('visible');
-}, 2000)
-
-// ORDER CONTAINER
-
-$('.panel').click(function() {
-  if(!$(this).hasClass('active')) {
-    var index = $(this).index();
-    $('#order').removeClass();
-    $('#order').addClass('opt'+(index+1));
-    $('#choice').get(0).selectedIndex = index;
-    $(this).siblings().addClass('hidden');
-    $(this).addClass('active');
-    $('#order').delay(800).slideToggle(400);
-  }
-});
-
-$('#back').click(function(e) {
-  $('#order').slideToggle(400);
-  var self = this;
-  setTimeout(function() {
-    $('.panel').removeClass('hidden active');
-  }, 400);
-  e.preventDefault();
-});
-
-$('#submit').click(function(e) {
-  e.preventDefault();
-});
-
-$('#quantity').on('input change', function() {
-  var qv = $('#quantity').val();
-  if(qv % 1 != 0) {
-    qv = parseInt(qv, 10);
-    if(qv == 0) qv = "";
-    qv += "½";
-  }
-  $('label[for="quantity"]').text(qv);
-  // TODO: update the price as well
-})
+/* ---------------------------------------------------------------------- */

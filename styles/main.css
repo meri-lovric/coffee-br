@@ -1,27 +1,52 @@
 body{
     display:grid;
 	margin: 0px;
-    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Archivo','Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #fff;
 	background: #272729;
 	height: 100vh;
-	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;
 }
 /* HEADER */
+@media screen and (max-width: 620px){
+    header { display: none; }
+  }
 header{
     position: fixed;
+    background: #272729;
     top: 0;
     right:0;
     left:0;
     z-index: 1;
-    border-bottom: solid 1px black;
+    border-bottom:none;
+    padding: 10px;
+    height: 95px;
 }
 #header-icons{
     margin: 10px 100px;
     display: flex;
     justify-content: space-between;
+}
+
+#login-icon {
+    font-size:2em;
+    position: relative;
+    top: 15px;
+}
+
+#logout-icon {
+    font-size:2em;
+    position: relative;
+    top: 15px;
+}
+.LoginForm {
+    height: 50px;
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
 }
 
 a {
@@ -40,15 +65,9 @@ main{
     flex-direction: column;
     grid-template-columns: 600px 300px;
     column-gap: 2em;
-    border: 1px solid black;
-    margin: 70px auto;
-}
-
-.admin-menu
-{
-    outline-color: none;
-    background-color: inherit;
     border: none;
-    cursor: pointer;
-    display: grid;
+    margin: 100px auto;
+}
+option .hidden{
+    display:none;
 }

@@ -1,75 +1,62 @@
+#header-icons .box {
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  width: 250px;
+  height:65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#title {
+  width: auto; 
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+	opacity: 1;
+	transform: scale(1);
+  transition: transform 0.8s ease, opacity 1.6s ease;
+  user-select: none;
+  height:50px;
 
-    /* COFFEE LOGO */
+}
+b { 
+  font-weight: 700; 
+  position:relative;
+  top: 12px;
+  display: inline-block;
+}
+.coffee-br {
+  font-weight: 300;
+  position:relative;
+  top: 12px;
+  display: inline-block;
+}
 
-    
-    .box {
-        width: 150px;
-        height: 50px;
-        border-radius: 5px;
-        box-shadow: 0 2px 30px rgba(black, .2);
-        background: lighten(#f0f4c3, 10%);
-        position: relative;
-        overflow: hidden;
-        transform: translate3d(0, 0, 0);
-      }
-      
-      .wave {
-        opacity: .4;
-        position: absolute;
-        top: 15%;
-        left: 10%;
-        background: #0af;
-        width: 500px;
-        height: 500px;
-        margin-left: -200px;
-        margin-top: -470px;
-        transform-origin: 50% 48%;
-        border-radius: 43%;
-        animation: drift 3000ms infinite linear;
-      }
-      
-      .wave.-three {
-        animation: drift 5000ms infinite linear;
-      }
-      
-      .wave.-two {
-        animation: drift 7000ms infinite linear;
-        opacity: .1;
-        background: yellow;
-      }
-      
-      .box:after {
-        content: '';
-        display: block;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
-        z-index: 11;
-        transform: translate3d(0, 0, 0);
-      }
-      
-      .title {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-        line-height: 40px;
-        text-align: center;
-        transform: translate3d(0, 0, 0);
-        color: white;
-        text-transform: uppercase;
-        font-family: 'Playfair Display', serif;
-        letter-spacing: .4em;
-        font-size: 10px;
-        text-shadow: 0 1px 0 rgba(black, .1);
-        text-indent: .3em;
-      }
-      @keyframes drift {
-        from { transform: rotate(0deg); }
-        from { transform: rotate(360deg); }
-      }
-    
-    
+.bracket {
+  color:#4EB6DA;
+  position:relative;
+  top: 12px;
+}
+
+#title:before, #title:after {
+	height: 0.1vw;
+	width: 100%;
+	content: "";
+	background: rgba(255, 255, 255, 0.9);
+	display: block;
+	position: absolute;
+	transition: width 0.8s ease;
+	transition-delay: 0.8s;
+}
+#title:before { top: 0; left: 0; }
+#title:after  { bottom: 0; right: 0; }
+
+.loading #title {
+	transform: scale(4);
+	opacity: 0;
+  transition: all 0s;
+}
+.loading #title:before, .loading #title:after {
+	width: 0;
+} 

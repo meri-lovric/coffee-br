@@ -6,6 +6,7 @@
     position: relative;
     margin-top: 50px;
     border: solid 5px #CCC;
+
     text-align: center;
   }
     .listing--animated-ordered:before{
@@ -21,13 +22,14 @@
   
    .listing--animated-ordered ol{
       list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       max-width: 1200px;
       margin: 10px auto 0 auto;
       padding: 0;
    }
     .listing--animated-ordered  li{
         display: inline-block;
-        width: 18%;
         margin: 0 2% 0 0;
         padding: 0;
         font-size: 13px;
