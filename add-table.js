@@ -9,6 +9,8 @@ nextIcon.addEventListener("click", function (){
             if(tableIcons[j].textContent == table_value){
                     tableIcons[j].classList.add("layout__seat--selected");
                     table.setAttribute('disabled', true);
+                    occupiedSeats++;
             }
         }
+        document.getElementById("seat-counter").innerHTML = occupiedSeats+"/"+seats.length;
     });

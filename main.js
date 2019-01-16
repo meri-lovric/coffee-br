@@ -1,4 +1,8 @@
-var occupiedSeats = 0;
+// VARIABLES
+
+var occupiedSeats = 0; // global variable used for displaying current occupation
+/* ---------------------------------------------------------------------- */
+
 // TABS
 function openTab(evt, tabName) {
     // Declare all variables
@@ -21,15 +25,12 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
   }
 
-  // SEATS
+/* ---------------------------------------------------------------------- */
+
+  // CLICKING ON SEATS
+
  let seats = document.querySelectorAll(".layout__seat");
- /*
- for(i=0;i<seats.length;i++){
-   if(seats[i].classList.contains("clicked")){
-     occupiedSeats++;
-   }
- }
- */
+ 
  document.getElementById("seat-counter").innerHTML = occupiedSeats+"/"+seats.length;
  for(i=0;i<seats.length;i++){
    let seat = seats[i];
@@ -48,9 +49,6 @@ function openTab(evt, tabName) {
      for(let j=0;j < options.length; j++){
       let  option = options[j];
       if(option.textContent.indexOf(reservedSeat.textContent) > 0){
-        //option.removeAttributeNode(option.getAttribute("disabled"));
-          //option.removeAttribute('hidden');
-
       }
     }
      }
@@ -70,11 +68,27 @@ if(table.classList.contains(".layout__seat.layout__seat--selected " )== 0){
   }
 }
 }
- // OPEN WELCOME ON LOAD
+/* ---------------------------------------------------------------------- */
 
- window.onload = function() {
+
+// LOGO ANIMATION 
+
+function init() {  
+  title.classList.add("loading");
+  setTimeout(function() { title.classList.remove("loading"); }, 1800); 
+}
+/* ---------------------------------------------------------------------- */
+// LOADING WINDOW
+
+window.onload = function() {
   document.getElementById("Welcome").style.display = "block";
-};
+  document.body.addEventListener('click', () => init());
+	init();
+}; 
+
+/* ---------------------------------------------------------------------- */
+
+// TEST ADD USER
 
 function addUser(evt, TabName){
   let fullName = prompt("Ime i prezime:", "full name");
@@ -88,3 +102,5 @@ function addUser(evt, TabName){
   document.querySelector("#Profile .username").innerHTML="Korisničko ime: " + username;
   document.querySelector("#Profile .email").innerHTML="E-mail adresa: " + email;
 }
+
+/* ---------------------------------------------------------------------- */
