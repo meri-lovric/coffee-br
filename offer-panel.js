@@ -1,4 +1,3 @@
-
 let panels = document.querySelectorAll(".panel");
 for(let i=0; i<panels.length; i++){
   let panel=panels[i];
@@ -36,13 +35,16 @@ function handlePanelClick(e){
         }
       e.preventDefault();
       })
+
+    ///---------------------------------------------------------------------------------------------------------------------------
+
       //
       // ADD BUTTON
       //
     let add = currentPanel.parentElement.querySelector(".submit");
     add.addEventListener("click", addArticles);
     add.addEventListener("click", calculatePrice);
-    function addArticles()
+    function addArticles(e)
     {
       let orderTemplate=document.querySelector("#order-template");
       let orderElement=document.importNode(orderTemplate.content, true);
@@ -57,23 +59,25 @@ function handlePanelClick(e){
       let orderContainer=document.querySelector(".order-row");
       let ordered=document.querySelector("#order-list");
       orderContainer.insertBefore(orderElement,ordered);
+      e.preventDefault();
+
     }
+    ///---------------------------------------------------------------------------------------------------------------------------
+
 
     //PRICE CALCULATOR//
     function calculatePrice()
     {
     let price =currentPanel.parentElement.querySelector(".price");
     let totalPrice=document.querySelector(".total");
-    let payablePrice=document.querySelector(".payable");
-    let discountPrice=document.querySelector(".discount");
 
     totalPrice.textContent=Number(totalPrice.textContent)+
     Number(price.textContent);
 
-    payablePrice.textContent=Number(totalPrice.textContent)-
-    Number(discountPrice.textContent);
     }
-    
+    ///---------------------------------------------------------------------------------------------------------------------------
+
+
     //
     //  QUANTITY
     //  
@@ -94,22 +98,6 @@ function handlePanelClick(e){
         e.preventDefault();
       })
     })
-    
-
+    ///---------------------------------------------------------------------------------------------------------------------------
   }
 }
-
-$('.submit').click(function(e) {
-  e.preventDefault();
-});
-
-$('.quantity').on('input change', function() {
-  var qv = $('.quantity').val();
-  if(qv % 1 != 0) {
-    qv = parseInt(qv, 10);
-    if(qv == 0) qv = "";
-    qv += "½";
-  }
-  $('label[for="quantity"]').text(qv);
-  // TODO: update the price as well
-})
