@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coffee<br></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\coffee-logo.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\counter.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\offer-panel.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\offer.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\tabs.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\welcome.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\receipt.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\sign-up-in.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\info-help.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles\order-pop-up.css" />
+    <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
+
+    <template id="order-template">
+        <div class="order-list">
+            <span class="name"></span>
+            <span >x</span>
+            <span class="quantity"> </span>
+            <i class="fas fa-times"></i>
+        </div>
+    </template>
+</head>
+<body>
+    <!--    HEADER    -->
+    <header>
+        <div id="header-icons">
+                <div class='box'>
+                    <div id='title' class = "loading"><b>Coffee </b><label class ="bracket">&lt;</label><label class ="coffee-br">br</label><label class ="bracket">&gt;</label></div>
+                </div>
+            <div class="LoginForm">
+                <a href="#" id="login-icon"><span><i class="fas fa-user-circle"></i></span></a>
+                <a href="#" id="logout-icon"><span><i class="fas fa-times-circle"></i></span></a>
+
+        <!-- INFO POPUP -->
+        <div id="info">
+            <div class="popup" onclick="myFunction()"><i class="fas fa-info-circle"></i>
+              <span class="popuptext" id="myPopup">
+                  <p id="info-text">
+                    Naziv obrta : Coffee Break<br>
+                    <br>OIB : 212923942<br>
+                    <br>Lokacija : Ruđera Boškovića 32<br>
+                    <br>Broj telefona : 021 443 221<br>
+                    <br>Radno vrijeme : pon-pet 7-21h
+                  </p>
+                  <p style="text-indent: 8.5em;" id="sub">
+                       sub,ned 8-23h<br>
+                  </p>
+              </span>
+            </div>
+        <!-- --------------------------------------------------------------------------------------------------- -->
+        <!-- HELP POPUP -->
+            <div class="popup" onclick="myFunction2()"><i class="fas fa-question-circle"></i>
+                <span class="popuptext" id="myPopup2">
+                    <p id="info-text2">
+                      POMOĆ
+                    </p>
+                </span>
+              </div>
+        <!-- ----------------------------------------------------------------------------------------------- -->
+        </div>
+        </div>
+        </div>
+    </header>
+    <!-- ---------------------------------------------------------------------- -->
+    <!-- REGISTRATION / LOGIN FORM -->
+    <div class = "bg-modal">
+        <div class="form"> <!--modal box for login/registration-->
+            <div class="close">+</div>
+            <ul class="tab-group">
+                    <li class="tag active"><a href="#signup">Registracija</a></li>
+                    <li class="tag"><a href="#login">Prijava</a></li>
+                </ul>   
+                <div class="tab-content">
+                    <div id="signup">   
+                    <h1>Registriraj se</h1>           
+                    <form action="/" method="post">       
+                        <div class="top-row">
+                            <div class="field-wrap">
+                                <label>Ime<span class="req">*</span></label>
+                                <input type="text" id="log-name" required autocomplete="off" />
+                            </div>
+                            <div class="field-wrap">
+                                <label>Prezime<span class="req">*</span></label>
+                                <input type="text" id="log-surname" required autocomplete="off"/>
+                            </div>
+                        </div>
+                        <div class="field-wrap">
+                            <label>E-mail adresa<span class="req">*</span></label>
+                            <input type="email" id="log-email"required autocomplete="off"/>
+                        </div>
+                        <div class="field-wrap">
+                            <label>Lozinka<span class="req">*</span></label>
+                            <input type="password"required autocomplete="off"/>
+                        </div>
+                        <button type="submit" class="button button-block">Nastavi</button>
+                    </form>
+                    </div>
+
+                    <div id="login">   
+                    <h1>Dobrodošli natrag</h1>
+                    <form action="/" method="post">
+                        <div class="field-wrap">
+                            <label>Email adresa<span class="req">*</span></label>
+                            <input type="email"required autocomplete="off"/>
+                        </div>
+                        <div class="field-wrap">
+                            <label>Lozinka<span class="req">*</span></label>
+                            <input type="password"required autocomplete="off"/>
+                        </div>     
+                        <p class="forgot"><a href="#">Zaboravljena lozinka?</a></p>  
+                        <button class="button button-block">Prijava</button>  
+                    </form>
+                    </div>
+
+                </div><!-- tab-content -->
+            </div> <!-- /form -->
+        </div>
+    <!-- ---------------------------------------------------------------------- -->
+
+    <!-- MAIN CONTAINER -->
+    <div id="overlay" class="cover blur-out">
+    <main>
+        <!-- LEFT COLUMN - TABS -->
+        <section id="cards-container">
+            <!-- Tab links -->
+        <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Welcome')" >Dobrodošli</button>
+        <button class="tablinks" onclick="openTab(event, 'Offer')">Ponuda</button>
+        <button class="tablinks" onclick="openTab(event, 'Profile')" style="display:none">Profil</button>
+        <button class="tablinks" onclick="openTab(event, 'Admin') ">Administrator</button>
+
+        </div>
+        <!-- ---------------------------------------------------------------------- -->
+      <!-- Tab content -->
+      <!-- first tab -->
+      <div id="Welcome" class="tabcontent">
+        <h3>Dobrodošli</h3> <!-- TITLE -->
+        <!-- each tab has to have a layout class in order for the tabs to display correctly
+            the tab content is defined inside the layout class - e.g. layout__grid
+        -->
+        <div class="layout">
+            <div class="layout__grid">
+                <div class="layout__column">
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">1</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">2</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">3</span></div>
+                </div>
+                  <div class="layout__column">
+                      <div class="layout__seat" role="checkbox"><span class="layout__seat__name">4</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">5</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">6</span></div>
+                  </div>
+                  <div class="layout__column">
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">7</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">8</span></div>
+                    <div class="layout__seat " role="checkbox"><span class="layout__seat__name">9</span></div>
+                  </div>
+              </div>
+          </div>
+          <div id="seat-counter"></div><!-- shows current occupation of capacity using var occupiedSeats and 
+            function reserveSeat in jS -->
+      </div>
+       <!-- ---------------------------------------------------------------------- -->
+
+      <!-- second tab -->
+      <div id="Offer" class="tabcontent">
+        <div class="layout">
+            <!-- HOT DRINKS -->
+            <div class="hot-drinks">
+                <h3>Topla pića <i class="fas fa-mug-hot"></i> </h3>
+                <div class="menu">
+                        <div class="panel"><svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewbox="0 0 500 750">
+                        <i class="fas fa-plus"></i>
+                    </svg>
+                        <h1 class="name">Bijela kava</h1>
+                        <span class="price" value="4.50">4.50</span>
+                        </div>
+        
+                        <div class="panel"><svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewbox="0 0 500 750">
+                        <i class="fas fa-plus"></i>
+                    </svg>
+                        <h1 class="name">Macchiato</h1>
+                        <span class="price" value="5">5</span>
+                        </div>
+                        <div class="panel"><svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewbox="0 0 500 750">
+                        <i class="fas fa-plus"></i>
+                    </svg>
+                        <h1 class="name">Nesscaffe</h1>
+                        <h2 class="type">Lager</h2><span class="price" value="4.50">4.50</span>
+                        </div>
+                        <div class="panel"><svg
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewbox="0 0 500 750">
+                        <i class="fas fa-plus"></i>
+                    </svg>
+                        <h1 class="name">Cappuccino</h1>
+                        <span class="price" value="4">4</span>
+                        </div>
+                        <form class="order">
+                        <label for="quantity">1</label>
+                        <input class="quantity" type="range" min="1" max="5" value="1" step="1" name="quantity"/>
+                        <input class="back" type="reset" value="Odustani"/>
+                        <input class="submit" type="submit" value="Dodaj"/>
+                        </form>
+                    </div>
+                </div>
+             <!-- ---------------------------------------------------------------------- -->
+             <!-- COLD DRINKS -->
+                <div class="cold-drinks">
+                    <h3>Bezalkoholna pića <i class="fas fa-mug-hot"></i> </h3>
+                    <div class="menu">
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Coca Cola</h1>
+                            <span class="price" value="4.50">4.50</span>
+                            </div>
+            
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Fanta</h1>
+                            <span class="price" value="5">5</span>
+                            </div>
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Sensation</h1>
+                            <span class="price" value="4.50">4.50</span>
+                            </div>
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Gusti sok</h1>
+                            <span class="price" value="4">4</span>
+                            </div>
+                            <form class="order">
+                                    <select class="choice" name="choice">
+                                            <option value="cocacola">Coca-cola</option>
+                                            <option value="fanta">Fanta</option>
+                                            <option value="sensation">Sensation</option>
+                                            <option value="gusti">Gusti</option>
+                                          </select>
+                            <label for="quantity">1</label>
+                            <input class="quantity" type="range" min="1" max="5" value="1" step="1" name="quantity"/>
+                            <input class="back" type="reset" value="Odustani"/>
+                            <input class="submit" type="submit" value="Dodaj"/>
+                            </form>
+                        </div>
+                    </div>
+                <!-- ---------------------------------------------------------------------- -->
+                <!-- ALCOHOLIC DRINKS -->
+                <div class="alcoholic-drinks">
+                    <h3>Alkoholna pića<i class="fas fa-glass-whiskey"></i></h3>
+                    <div class="menu">
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Somersby</h1>
+                            <span class="price" value="4.50">4.50</span>
+                            </div>
+        
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Whiskey</h1>
+                            <span class="price" value="5">5</span>
+                            </div>
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Vodka</h1>
+                            <span class="price" value="4.50">4.50</span>
+                            </div>
+                            <div class="panel"><svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewbox="0 0 500 750">
+                            <i class="fas fa-plus"></i>
+                        </svg>
+                            <h1 class="name">Cognac</h1>
+                            <span class="price" value="4">4</span>
+                            </div>
+                            <form class="order">
+                            <label for="quantity">1</label>
+                            <input class="quantity" type="range" min="0.5" max="4" value="1" step="0.5" name="quantity"/>
+                            <input class="back" type="reset" value="Odustani"/>
+                            <input class="submit" type="submit" value="Dodaj"/>
+                            </form>
+                        </div>
+                    </div>
+                <!-- ---------------------------------------------------------------------- -->
+                    <div class="wines">
+                        <h3>Vino <i class="fas fa-wine-glass-alt"></i></h3>
+                        <div class="menu">
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Graševina</h1>
+                                <span class="price" value="4.50">4.50</span>
+                                </div>
+        
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Plavac mali</h1>
+                                <span class="price" value="5">5</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Chardonnay</h1>
+                                <span class="price" value="4.50">4.50</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Traminac</h1>
+                                <span class="price" value="4">4</span>
+                                </div>
+                                <form class="order">
+                                <label for="quantity">1</label>
+                                <input class="quantity" type="range" min="0.5" max="4" value="1" step="0.5" name="quantity"/>
+                                <input class="back" type="reset" value="Odustani"/>
+                                <input class="submit" type="submit" value="Dodaj"/>
+                                </form>
+                            </div>
+                    </div>
+                <!-- ---------------------------------------------------------------------- -->
+                <!-- COCKTAILS-->
+                    <div class="cocktails-drinks">
+                        <h3>Kokteli <i class="fas fa-cocktail"></i></h3>
+                        <div class="menu">
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Margarita</h1>
+                                <span class="price" value="4.50">4.50</span>
+                                </div>
+        
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Mojito</h1>
+                                <span class="price" value="5">5</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Caipirinha</h1>
+                                <span class="price" value="4.50">4.50</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg> 
+                                <h1 class="name">Bacardi</h1>
+                                <span class="price" value="4">4</span>
+                                </div>
+                                <form class="order">
+                                <label for="quantity">1</label>
+                                <input class="quantity" type="range" min="0.5" max="4" value="1" step="0.5" name="quantity"/>
+                                <input class="back" type="reset" value="Odustani"/>
+                                <input class="submit" type="submit" value="Dodaj"/>
+                                </form>
+                            </div>
+                        </div>
+                 <!-- ---------------------------------------------------------------------- -->
+                 <!-- BEERS -->
+                    <div class="beers">
+                        <h3>Pivo <i class="fas fa-beer"></i></h3>  
+                        <!------Đani radioooooooo----->
+                        <div class="menu">
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Leffe</h1>
+                                <span class="price">$4.50</span>
+                                </div>
+        
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Paulaner</h1>
+                                <span class="price">$5</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Heineken</h1>
+                                <span class="price">$4.50</span>
+                                </div>
+                                <div class="panel"><svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewbox="0 0 500 750">
+                                <i class="fas fa-plus"></i>
+                            </svg>
+                                <h1 class="name">Tuborg</h1>
+                                <h2 class="type">Stout</h2><span class="price">$4</span>
+                                </div>
+                                <form class="order">
+                                <label for="quantity">1</label>
+                                <input class="quantity" type="range" min="0.5" max="4" value="1" step="0.5" name="quantity"/>
+                                <input class="back" type="reset" value="Odustani"/>
+                                <input class="submit" type="submit" value="Dodaj"/>
+                                </form>
+                            </div>
+              </div>
+               <!-- ---------------------------------------------------------------------- -->
+        </div>
+    </div>              
+     <!-- ---------------------------------------------------------------------- -->
+      <!-- third tab -->
+      <div id="Profile" class="tabcontent">
+        <h3>Profil</h3>
+        <div class="full-name">Ime: User Example</div>
+        <div class="email">E-mail adresa: userexample@mail.com</div>
+        <div id="coffee-current-counter"></div><!-- shows current amount of ordered coffees since last "free coffee" achievement -->
+        <div id="coffee-counter">
+            <div class="listing--animated-ordered">
+                <ol>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                <li>
+                    <div class="header-circle"><i class="fas fa-coffee"></i></div>
+                    <h2>1 bod</h2>
+                </li>
+                </ol>
+                </div> 
+        </div>
+      </div>
+    <!-- ---------------------------------------------------------------------- -->
+       <!--fourth tab-->
+       <div id="Admin" class="tabcontent">
+        <div class="layout">
+            <div class="financial-transactions">
+                <h3>Promet</h3>
+                <button class="admin-menu"><li>Dnevni promet </li></button>
+                <button class="admin-menu"><li>Mjesečni promet </li></button>
+            </div>
+            <div class="tables">
+                <h3>Stolovi</h3>
+                <button class="admin-menu"><li>Zauzeti </li></button>
+                <button class="admin-menu"><li>Slobodni </li></button>
+            </div>
+        <!-- ---------------------------------------------------------------------- -->
+            <div class="items">
+                <h3>Artikli-količina: </h3>
+                <div>Topla pića
+                <button class="admin-menu"><li>Bijela kava </li></button>
+                <button class="admin-menu"><li>Macchiato</li></button>
+                <button class="admin-menu"><li>Nesscaffe </li></button>
+                <button class="admin-menu"><li>Cappucino </li></button>
+                </div>
+                <div>Bezalkohola pića
+                <button class="admin-menu"><li>Coca Cola</li></button>
+                <button class="admin-menu"><li>Fanta</li></button>
+                <button class="admin-menu"><li>Sensation </li></button>
+                <button class="admin-menu"><li>Gusti sok</li></button>
+                </div>
+                <div>Alkoholna pića
+                <button class="admin-menu"><li>Somersby</li></button>
+                <button class="admin-menu"><li>Whiskey</li></button>
+                <button class="admin-menu"><li>Vodka </li></button>
+                <button class="admin-menu"><li>Cognac</li></button>
+                </div>
+                <div>Vino
+                <button class="admin-menu"><li>Graševina</li></button>
+                <button class="admin-menu"><li>Plavac mali</li></button>
+                <button class="admin-menu"><li>Chardonnay</li></button>
+                <button class="admin-menu"><li>Traminac</li></button>
+                </div>
+                <div>Kokteli
+                <button class="admin-menu"><li>Margarita</li></button>
+                <button class="admin-menu"><li>Mojito</li></button>
+                <button class="admin-menu"><li>Caipirinha</li></button>
+                <button class="admin-menu"><li>Bacardi</li></button>
+                </div>
+                <div>Pivo
+                 <button class="admin-menu"><li>Leffe</li></button>
+                <button class="admin-menu"><li>Paulaner</li></button>
+                <button class="admin-menu"><li>Heineken </li></button>
+                <button class="admin-menu"><li>Tuborg</li></button>
+
+            </div>
+            <div class="users">
+                <h3>Korisnici: </h3>
+                <button class="admin-menu"><li>Registrirani </li></button>
+            </div>           
+         </div>
+         </div>
+        </div>
+        </section>
+        <!-- ORDER CONTAINER -->
+        <section id="order-container">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 container-print">
+                    <div class="board board-dark board-default pseudo">
+                      <div class="board-body">
+                        <div id="order-row">
+                        <!--dodo template-->
+                    </div>
+                      <hr /> 
+                        <div class="price-row">
+                          <div class="col-sm-8">Ukupna cijena</div>
+                          <div class="col-sm-4 total">0</div>
+                        </div>
+                        <hr />
+                        <div class="row table">
+                                <select id="table" name="table">
+                                        <option value="" selected >Odaberi stol</option>
+                                        <option class="table-item" value="1">Stol 1</option>
+                                        <option class="table-item" value="2">Stol 2</option>
+                                        <option class="table-item" value="3">Stol 3</option>
+                                        <option class="table-item" value="4">Stol 4</option>
+                                        <option class="table-item" value="5">Stol 5</option>
+                                        <option class="table-item" value="6">Stol 6</option>
+                                        <option class="table-item" value="7">Stol 7</option>
+                                        <option class="table-item" value="8">Stol 8</option>
+                                        <option class="table-item" value="9">Stol 9</option>
+
+                                      </select>
+                        </div>
+                        <div class="row text-center">
+                          <button id="btn">
+                                <i class="fas fa-arrow-circle-right"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+        </section>
+         <!-- ---------------------------------------------------------------------- -->
+    </main>
+</div>
+    <div class="row pop-up">
+        <div class="box small-6 large-centered">
+          <a href="#" class="close-button">&#10006;</a>
+          <p>Vaša narudžba je uspješno zaprimljena.</p>
+        </div>
+      </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/offer-panel.js"></script>
+<script src="scripts/order-confirmation.js"></script>
+<script src="scripts/sign-up-in.js"></script>
+<script src="scripts/pop-up.js"></script>
+<script src="scripts/delete-order-item.js"></script>
+<script src="scripts/order-pop-up.js"></script>
+<script src="scripts/coffee-counter.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</html>

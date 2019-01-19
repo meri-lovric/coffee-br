@@ -1,0 +1,108 @@
+let panels = document.querySelectorAll(".panel");
+for(let i=0; i<panels.length; i++){
+  let panel=panels[i];
+  panel.addEventListener("click", handlePanelClick);
+  
+}
+function handlePanelClick(e){
+  let currentPanel = e.currentTarget;
+  if(currentPanel.classList.contains("active") == 0){
+    var index = $(currentPanel).index();
+    var order = currentPanel.parentElement.querySelector(".order");
+    $(order).addClass('opt'+(4));
+    $(currentPanel).addClass("active");
+    //order.classList.addClass("opt1");
+    let panelsInstance=currentPanel.parentElement.querySelectorAll(".panel");
+    for(i=0;i<panelsInstance.length;i++){
+      if(panelsInstance[i].classList.contains("active")== 0){
+        $(panelsInstance[i]).addClass("hidden");
+      }
+    }
+    $(order).delay(800).slideToggle(400);
+    //
+    // BACK BUTTON
+    //
+    
+    let back = currentPanel.parentElement.querySelector(".back");
+    back.addEventListener("click",function(){
+          $(order).slideToggle(400);
+          var self = this;
+          setTimeout(function() {
+        $(currentPanel).removeClass('active');
+        }, 400);
+        for(i=0;i<panelsInstance.length;i++){
+            $(panelsInstance[i]).removeClass("hidden");
+        }
+        $(order).addClass("hidden");
+      let quant = document.querySelectorAll('[for="quantity"]');
+      for(i=0;i<quant.length;i++){
+        quant[i].innerText=1;
+      }
+      })
+
+    ///---------------------------------------------------------------------------------------------------------------------------
+
+      //
+      // ADD BUTTON
+      //
+    let add = currentPanel.parentElement.querySelector(".submit");
+    add.addEventListener("click", addArticles);
+    add.addEventListener("click", calculatePrice);
+    function addArticles(e)
+    {
+      let orderTemplate=document.querySelector("#order-template");
+      let orderElement=document.importNode(orderTemplate.content, true);
+      orderElement.querySelector(".fas.fa-times").addEventListener("click", deleteOrderItem);
+      orderElement.querySelector(".fas.fa-times").addEventListener("click", reducePrice);
+
+      let articleName=currentPanel.querySelector(".name");
+      let articleNum=order.querySelector('[for="quantity"]');
+      let orderList=orderElement.querySelectorAll("span");
+      orderList[0].innerHTML=articleName.innerHTML;
+      orderList[1].innerHTML="x";
+      orderList[2].innerHTML=articleNum.innerHTML;
+      let orderContainer=document.querySelector("#order-row");
+      let ordered=document.querySelector(".order-list");
+      orderContainer.insertBefore(orderElement,ordered);
+      e.preventDefault();
+
+    }
+    ///---------------------------------------------------------------------------------------------------------------------------
+
+
+    //PRICE CALCULATOR//
+    function calculatePrice()
+    {
+    let price =currentPanel.querySelector(".price");
+    let totalPrice=document.querySelector(".total");
+
+    totalPrice.textContent=Number(totalPrice.textContent)+
+    Number(price.textContent);
+
+    }
+    ///---------------------------------------------------------------------------------------------------------------------------
+
+
+    //
+    //  QUANTITY
+    //  
+    let quantity=currentPanel.parentElement.querySelector(".quantity");
+    quantity.addEventListener("input", function(){
+        $(quantity).on('input change', function() {
+        var qv = $(quantity).val();
+        if(qv % 1 != 0) {
+          qv = parseInt(qv, 10);
+          if(qv == 0) qv = "";
+          qv += "½";
+        }
+        $('label[for="quantity"]').text(qv);
+        let price = currentPanel.querySelector(".price");
+        let value = price.getAttribute("value");
+        $(price).text(value*qv);
+        //price.innerHTML=$(price);
+        e.preventDefault();
+      })
+    })
+    ///---------------------------------------------------------------------------------------------------------------------------
+  }
+}

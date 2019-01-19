@@ -1,0 +1,105 @@
+ /* Popup container - can be anything you want */
+ .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 500px;
+    background-color: #272729;
+    color: #fff;
+    text-align: left;
+    border-radius: 20px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 20%;
+    margin-left: -500px;
+  }
+  
+  #info {
+    position: relative;
+    top: 15px;
+    width:100px;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 300;
+    
+  }
+#info b {
+  font-weight: 600;
+  position: relative;
+  top: auto;
+}
+#info #info-text2 {
+  position: relative;
+  left:30px;
+  
+}
+
+  .fa-info-circle {
+    font-size: 2em;
+    text-decoration: none;
+    color: #5E93AD;
+    transition: .5s ease;
+  }
+  .fa-question-circle {
+    font-size: 2em;
+    text-decoration: none;
+    color: #5E93AD;
+    transition: .5s ease;
+  }
+  
+/* Popup arrow 
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  */
+
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+#info-text{
+    padding-left: 20px;
+    font-size: 18px;
+  }
+
+#info{
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+#sub{
+    font-size: 18px;
+}
