@@ -1,0 +1,43 @@
+
+/* OFFER TAB */
+#Offer .layout{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+#Offer h3{
+    
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5em;
+    position: relative;
+    top:20px;
+    left: 15px;
+}
+#Offer h3 i{
+    color:#4EB6DA;
+}
+
+#search-container{
+    padding: 1em 0 0 10em;
+}
+
+.search-icon{
+    position: absolute;
+    padding:0.7em 0em 0 5.5em;
+    color: #A9A9A9;
+    font-size:0.65em;
+}
+
+#search-box{
+    border:1px solid lightgray;
+    border-radius:2.5px;
+    padding:0.36em 1.2em;
+    font-size:0.85em;
+    background-color:var(--primary-color);
+    color:#C0C0C0;
+
+}
+
+#search-box::placeholder { 
+    color:#C0C0C0;
+    padding-left:4.2em;
+}
