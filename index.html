@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Coffee <br></title>
+    <title>Coffee<br></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="styles\main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles\coffee-logo.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles\counter.css" />
@@ -16,8 +17,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles\sign-up-in.css" />
 
     <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+
     <template id="order-template">
         <div id="order-list">
             <span> </span>
@@ -27,20 +29,20 @@
     </template>
 </head>
 <body>
+    <!--    HEADER    -->
     <header>
         <div id="header-icons">
                 <div class='box'>
-                        <div class='wave -one'></div>
-                        <div class='wave -two'></div>
-                        <div class='wave -three'></div>
-                        <div class='title'>Coffee &lt;br&gt;</div>
-                      </div>
+                    <div id='title' class = "loading"><b>Coffee </b><label class ="bracket">&lt;</label><label class ="coffee-br">br</label><label class ="bracket">&gt;</label></div>
+                </div>
             <div class="LoginForm">
-                <div id="login-icon"><i class="far fa-plus-square"></i></div>
-                <div id ="logout-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <a href="#" id="login-icon"><span><i class="fas fa-user-circle"></i></span></a>
+                <a href="#" id="logout-icon"><span><i class="fas fa-times-circle"></i></span></a>
         </div>
         </div>
     </header>
+    <!-- ---------------------------------------------------------------------- -->
+    <!-- REGISTRATION / LOGIN FORM -->
     <div class = "bg-modal">
         <div class="form"> <!--modal box for login/registration-->
             <div class="close">+</div>
@@ -92,13 +94,10 @@
 
                 </div><!-- tab-content -->
             </div> <!-- /form -->
-        </div> <!--/bg-modal-->
-        <div class = "modal-box">
-            <div class="close">+</div>
-            <p>Jeste li sigurni da se želite odjaviti?</p>
-            <button class = "confirm" type = "button">Da</button>
-            <button class = "cancel" type ="button">Ne</button>
         </div>
+    <!-- ---------------------------------------------------------------------- -->
+
+    <!-- MAIN CONTAINER -->
     <main>
         <!-- LEFT COLUMN - TABS -->
         <section id="cards-container">
@@ -107,10 +106,10 @@
         <button class="tablinks" onclick="openTab(event, 'Welcome')" >Dobrodošli</button>
         <button class="tablinks" onclick="openTab(event, 'Offer')">Ponuda</button>
         <button class="tablinks" onclick="openTab(event, 'Profile'),addUser(event,'Profile') ">Profil</button>
-        <button class="tablinks" onclick="openTab(event, 'Admin') ">Admininstrator</button>
+        <button class="tablinks" onclick="openTab(event, 'Admin') ">Administrator</button>
 
-      </div>
-      
+        </div>
+        <!-- ---------------------------------------------------------------------- -->
       <!-- Tab content -->
       <!-- first tab -->
       <div id="Welcome" class="tabcontent">
@@ -140,9 +139,16 @@
           <div id="seat-counter"></div><!-- shows current occupation of capacity using var occupiedSeats and 
             function reserveSeat in jS -->
       </div>
+       <!-- ---------------------------------------------------------------------- -->
+
       <!-- second tab -->
       <div id="Offer" class="tabcontent">
+        <div id="search-container">
+            <i class="fas fa-search search-icon clickable-icon"></i>
+                <input type="text" id="search-box" placeholder="Traži"/>
+        </div>
         <div class="layout">
+            <!-- HOT DRINKS -->
             <div class="hot-drinks">
                 <h3>Topla pića <i class="fas fa-mug-hot"></i> </h3>
                 <div class="menu">
@@ -163,7 +169,7 @@
                         <i class="fas fa-plus"></i>
                     </svg>
                         <h1 class="name">Macchiato</h1>
-                        <h2 class="type">Ale</h2><span class="price" value="4">$5</span>
+                        <h2 class="type">Ale</h2><span class="price" value="4">5</span>
                         </div>
                         <div class="panel"><svg
                         version="1.1"
@@ -172,7 +178,7 @@
                         <i class="fas fa-plus"></i>
                     </svg>
                         <h1 class="name">Nesscaffe</h1>
-                        <h2 class="type">Lager</h2><span class="price" value="4.50">$4.50</span>
+                        <h2 class="type">Lager</h2><span class="price" value="4.50">4.50</span>
                         </div>
                         <div class="panel"><svg
                         version="1.1"
@@ -181,7 +187,7 @@
                         <i class="fas fa-plus"></i>
                     </svg>
                         <h1 class="name">Cappucino</h1>
-                        <h2 class="type">Stout</h2><span class="price" value="4">$4</span>
+                        <h2 class="type">Stout</h2><span class="price" value="4">4</span>
                         </div>
                         <form class="order">
                         <label for="quantity">1</label>
@@ -191,6 +197,8 @@
                         </form>
                     </div>
                 </div>
+             <!-- ---------------------------------------------------------------------- -->
+             <!-- COLD DRINKS -->
                 <div class="cold-drinks">
                     <h3>Bezalkoholna pića <i class="fas fa-mug-hot"></i> </h3>
                     <div class="menu">
@@ -245,6 +253,8 @@
                             </form>
                         </div>
                     </div>
+                <!-- ---------------------------------------------------------------------- -->
+                <!-- ALCOHOLIC DRINKS -->
                 <div class="alcoholic-drinks">
                     <h3>Alkoholna pića<i class="fas fa-glass-whiskey"></i></h3>
                     <div class="menu">
@@ -293,6 +303,7 @@
                             </form>
                         </div>
                     </div>
+                <!-- ---------------------------------------------------------------------- -->
                     <div class="wines">
                         <h3>Vino <i class="fas fa-wine-glass-alt"></i></h3>
                         <div class="menu">
@@ -341,7 +352,9 @@
                                 </form>
                             </div>
                     </div>
-                    <div class="coctails-drinks">
+                <!-- ---------------------------------------------------------------------- -->
+                <!-- COCKTAILS-->
+                    <div class="cocktails-drinks">
                         <h3>Kokteli <i class="fas fa-cocktail"></i></h3>
                         <div class="menu">
                                 <div class="panel"><svg
@@ -390,7 +403,8 @@
                                 </form>
                             </div>
                         </div>
-        
+                 <!-- ---------------------------------------------------------------------- -->
+                 <!-- BEERS -->
                     <div class="beers">
                         <h3>Pivo <i class="fas fa-beer"></i></h3>  
                         <!------Đani radioooooooo----->
@@ -440,8 +454,10 @@
                                 </form>
                             </div>
               </div>
+               <!-- ---------------------------------------------------------------------- -->
         </div>
-    </div>                    <!-------kraj đani radio----------->
+    </div>              
+     <!-- ---------------------------------------------------------------------- -->
       <!-- third tab -->
       <div id="Profile" class="tabcontent">
         <h3>Profil</h3>
@@ -492,7 +508,7 @@
                 
         </div>
       </div>
-
+    <!-- ---------------------------------------------------------------------- -->
        <!--fourth tab-->
        <div id="Admin" class="tabcontent">
         <div class="layout">
@@ -500,12 +516,13 @@
                 <h3>Promet</h3>
                 <button class="admin-menu"><li>Dnevni promet </li></button>
                 <button class="admin-menu"><li>Mjesečni promet </li></button>
+            </div>
             <div class="tables">
                 <h3>Stolovi</h3>
                 <button class="admin-menu"><li>Zauzeti </li></button>
                 <button class="admin-menu"><li>Slobodni </li></button>
             </div>
-
+        <!-- ---------------------------------------------------------------------- -->
             <div class="items">
                 <h3>Artikli-količina: </h3>
                 <div>Topla pića
@@ -550,9 +567,10 @@
                 <button class="admin-menu"><li>Registrirani </li></button>
             </div>           
          </div>
-
+         </div>
+        </div>
         </section>
-
+        <!-- ORDER CONTAINER -->
         <section id="order-container">
                 <div class="row">
                   <div class="col-sm-6 col-sm-offset-3 container-print">
@@ -566,21 +584,11 @@
                                 <span> </span>
                                 <span> </span>
                             </div>
-                       
                     </div>
                       <hr /> 
                         <div class="price-row">
                           <div class="col-sm-8">Total amount</div>
                           <div class="col-sm-4 total">0</div>
-                        </div>
-                        <div class="discount-row">
-                          <div class="col-sm-8">Discount</div>
-                          <div class="col-sm-4 discount">5</div>
-                        </div>
-                        <hr />
-                        <div class="payable-row">
-                          <div class="col-sm-8">Payable amount</div>
-                          <div class="col-sm-4 payable">0</div>
                         </div>
                         <hr />
                         <div class="row table">
@@ -610,6 +618,7 @@
               
               </div>
         </section>
+         <!-- ---------------------------------------------------------------------- -->
     </main>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>

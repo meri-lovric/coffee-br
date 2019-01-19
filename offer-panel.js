@@ -1,4 +1,3 @@
-
 let panels = document.querySelectorAll(".panel");
 for(let i=0; i<panels.length; i++){
   let panel=panels[i];
@@ -36,13 +35,16 @@ function handlePanelClick(e){
         }
       e.preventDefault();
       })
+
+    ///---------------------------------------------------------------------------------------------------------------------------
+
       //
       // ADD BUTTON
       //
     let add = currentPanel.parentElement.querySelector(".submit");
     add.addEventListener("click", addArticles);
     add.addEventListener("click", calculatePrice);
-    function addArticles()
+    function addArticles(e)
     {
       let orderTemplate=document.querySelector("#order-template");
       let orderElement=document.importNode(orderTemplate.content, true);
@@ -57,23 +59,25 @@ function handlePanelClick(e){
       let orderContainer=document.querySelector(".order-row");
       let ordered=document.querySelector("#order-list");
       orderContainer.insertBefore(orderElement,ordered);
+      e.preventDefault();
+
     }
+    ///---------------------------------------------------------------------------------------------------------------------------
+
 
     //PRICE CALCULATOR//
     function calculatePrice()
     {
-    let price =currentPanel.parentElement.querySelector(".price");
+    let price =currentPanel.querySelector(".price");
     let totalPrice=document.querySelector(".total");
-    let payablePrice=document.querySelector(".payable");
-    let discountPrice=document.querySelector(".discount");
-
+    console.log(price);
     totalPrice.textContent=Number(totalPrice.textContent)+
     Number(price.textContent);
 
-    payablePrice.textContent=Number(totalPrice.textContent)-
-    Number(discountPrice.textContent);
     }
-    
+    ///---------------------------------------------------------------------------------------------------------------------------
+
+
     //
     //  QUANTITY
     //  
@@ -94,22 +98,81 @@ function handlePanelClick(e){
         e.preventDefault();
       })
     })
-    
-
+    ///---------------------------------------------------------------------------------------------------------------------------
   }
 }
 
-$('.submit').click(function(e) {
-  e.preventDefault();
-});
 
-$('.quantity').on('input change', function() {
-  var qv = $('.quantity').val();
-  if(qv % 1 != 0) {
-    qv = parseInt(qv, 10);
-    if(qv == 0) qv = "";
-    qv += "½";
-  }
-  $('label[for="quantity"]').text(qv);
-  // TODO: update the price as well
-})
+    //
+    //  SEARCH
+    //  
+    let searchBox=document.querySelector("#search-box");
+    let menus=document.querySelectorAll(".menu");
+    searchBox.addEventListener("keyup", handleSearch);
+
+    function handleSearch(e)
+    {
+      let currentValue=e.currentTarget.value;
+      
+      for (let i=0; i<menus.length; i++){
+          let menu=menus[i];
+          let panels=menu.querySelectorAll(".panel");
+          let names=menu.querySelectorAll(".name");
+          for (let j=0; j<names.length; j++)
+          {
+            let name=names[j];
+            if(currentValue==="")
+            {
+              menu.parentElement.classList.remove("hidden");
+              name.parentElement.querySelector(".fa-plus").classList.remove("hidden");
+            }
+            else
+            {
+
+              if(name.textContent.toLowerCase().indexOf(currentValue.toLowerCase())> -1 && name.textContent[0].indexOf(currentValue[0].toUpperCase())>-1)
+              {
+                
+                menu.parentElement.classList.remove("hidden");
+                name.parentElement.querySelector(".fa-plus").classList.add("hidden");
+                break;
+              }
+              else
+              {
+                menu.parentElement.classList.add("hidden");
+              }
+            }
+           
+          }
+
+          for (let k=0; k<panels.length; k++){
+              let panel=panels[k];
+              let name=panel.querySelector(".name");
+            
+              console.log(name.textContent[0]);
+
+              if(currentValue==="")
+              {
+                panel.classList.remove("hidden");
+                panel.querySelector(".fa-plus").classList.remove("hidden");
+              }
+              else{
+
+              
+              if(name.textContent.toLowerCase().indexOf(currentValue.toLowerCase())> -1 && name.textContent[0].indexOf(currentValue[0].toUpperCase())>-1)
+              {
+                
+                panel.classList.remove("hidden");
+                panel.querySelector(".fa-plus").classList.add("hidden");
+              }
+              
+              else
+              {
+                panel.classList.add("hidden");
+              }
+            }
+          }
+
+       }
+
+      }
+    
